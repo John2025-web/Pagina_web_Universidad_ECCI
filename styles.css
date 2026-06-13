@@ -1,0 +1,221 @@
+/* ============================================
+   ESTILOS — Conferencia Teoría del Color, ECCI
+   Proyecto SENA · Ficha 3288046
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f7f4ef;
+  --text: #1f1f1f;
+  --muted: #6a6a6a;
+  --accent: #c0392b;
+  --border: rgba(0, 0, 0, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Barra de progreso de lectura */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: var(--accent);
+  z-index: 999;
+  transition: width 0.1s ease-out;
+}
+
+/* ===== ENCABEZADO ===== */
+.header {
+  text-align: center;
+  padding: 5rem 1.5rem 4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.header-title .accent {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.header-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.header-author {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ===== INTRODUCCIÓN ===== */
+.intro {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  text-align: left;
+}
+
+.intro h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.intro p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* ===== TÍTULO DE BLOQUE ===== */
+.block-title {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.block-title h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.block-desc {
+  color: var(--muted);
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* ===== CADA FOTO + TEXTO ===== */
+.item {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.item img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+  object-fit: cover;
+  max-height: 600px;
+}
+
+.item-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.item-text p {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* En pantallas grandes: foto y texto lado a lado, alternando */
+@media (min-width: 800px) {
+  .item {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .item img {
+    flex: 1.2;
+    max-height: 420px;
+  }
+
+  .item-text {
+    flex: 1;
+  }
+
+  .item.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+/* ===== CONCLUSIÓN ===== */
+.conclusion {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.conclusion h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.conclusion p {
+  color: var(--muted);
+}
+
+/* ===== PIE DE PÁGINA ===== */
+.footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.footer p {
+  margin-bottom: 0.3rem;
+}
+
+/* ===== ANIMACIÓN DE ENTRADA ===== */
+.item,
+.intro,
+.block-title,
+.conclusion {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.item.visible,
+.intro.visible,
+.block-title.visible,
+.conclusion.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
